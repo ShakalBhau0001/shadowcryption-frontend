@@ -1,1 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description"
+        content="ShadowCryption - A privacy-first platform for hiding messages in images and audio securely." />
+    <meta name="keywords" content="steganography, encryption, privacy, images, audio, secure messaging" />
+    <meta name="author" content="Shakal Bhau" />
+    <title>ShadowCryption</title>
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+
+<body>
+    <!-- Hamburger button -->
+    <button id="hamburger" class="hamburger" aria-label="Open menu">
+        ☰
+    </button>
+    <!-- SIDEBAR -->
+    <aside class="sidebar" aria-label="Main sidebar">
+        <div class="sidebar-top">
+            <div class="brand" role="img" aria-label="logo">
+                <div class="logo-mark">
+                    <img src="assets/icons/logo.ico" alt="SC Logo" width="44" height="44">
+                </div>
+                <div class="title">ShadowCryption</div>
+            </div>
+
+            <nav class="nav" aria-label="Primary navigation">
+                <a href="#dashboard" class="nav-link">
+                    <span class="icon"><i class="fa-solid fa-house"></i></span>
+                    <span class="label">Dashboard</span>
+                </a>
+
+                <a href="#image-encrypt" class="nav-link">
+                    <span class="icon"><i class="fa-regular fa-image"></i></span>
+                    <span class="label">Image Encrypt</span>
+                </a>
+
+                <a href="#image-decrypt" class="nav-link">
+                    <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="label">Image Decrypt</span>
+                </a>
+
+                <a href="#audio-encrypt" class="nav-link">
+                    <span class="icon"><i class="fa-solid fa-music"></i></span>
+                    <span class="label">Audio Encrypt</span>
+                </a>
+
+                <a href="#audio-decrypt" class="nav-link">
+                    <span class="icon"><i class="fa-solid fa-unlock-keyhole"></i></span>
+                    <span class="label">Audio Decrypt</span>
+                </a>
+
+                <a href="#about" class="nav-link">
+                    <span class="icon"><i class="fa-solid fa-circle-info"></i></span>
+                    <span class="label">About</span>
+                </a>
+
+                <a href="#contact" class="nav-link">
+                    <span class="icon"><i class="fa-solid fa-address-book"></i></span>
+                    <span class="label">Contact</span>
+                </a>
+            </nav>
+        </div>
+
+        <div class="sidebar-bottom">
+            <button id="themeBtn" class="theme-btn" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main" id="main">
+        <header class="page-header">
+            <h1 id="pageTitle">ShadowCryption</h1>
+        </header>
+
+        <!-- DASHBOARD / OVERVIEW -->
+        <section id="dashboard" class="section card fade-in">
+            <h2 style="margin-top:0">Overview</h2>
+            <p class="muted">
+                ShadowCryption is a privacy-first platform for hiding messages in images and audio securely.
+                Encrypt text, embed it in media, and share safely.
+            </p>
+            <ul class="muted">
+                <li>💻 Encrypt text into PNG images or WAV audio files</li>
+                <li>🔓 Decrypt received steganographic files with a secure password</li>
+                <li>📥 Download and preview encrypted or decrypted files directly from the browser</li>
+                <li>📬 Send messages using our contact form with secure logging</li>
+                <li>🎨 Toggle dark/light theme for a comfortable UI experience</li>
+            </ul>
+            <p class="muted">Get started by choosing a feature from the sidebar!</p>
+        </section>
+
+        <!-- IMAGE ENCRYPT -->
+        <section id="image-encrypt" class="section card">
+            <h2>Image Encryption</h2>
+            <div class="encrypt-area">
+                <label class="label">Cover Image</label>
+                <div id="imageUploadBox" class="file-box" role="button" tabindex="0">
+                    Click or Drop An Image Here
+                </div>
+                <input id="imageFile" type="file" accept="image/png" style="display:none;">
+
+                <label class="label" for="imageMessage">Secret message</label>
+                <textarea id="imageMessage" placeholder="Message to hide inside image..."></textarea>
+
+                <div class="controls">
+                    <button class="btn" id="imageEncryptBtn">Encrypt Image</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMAGE DECRYPT -->
+        <section id="image-decrypt" class="section card">
+            <h2>Image Decryption</h2>
+            <div class="encrypt-area">
+                <label class="label">Encrypted Image</label>
+                <div id="imageDecryptBox" class="file-box" role="button" tabindex="0">
+                    Click or Drop An Encrypted Image Here
+                </div>
+                <input id="imageDecryptFile" type="file" accept="image/png" style="display:none;">
+
+                <label class="label" for="imageDecryptKey">Encryption Key</label>
+                <input id="imageDecryptKey" type="password" placeholder="Enter encryption key">
+
+                <div class="controls">
+                    <button class="btn ghost" id="imageDecryptBtn">Decrypt Image</button>
+                </div>
+
+                <div id="imageDecryptResult" style="margin-top:8px;"></div>
+            </div>
+        </section>
+
+        <!-- AUDIO ENCRYPT -->
+        <section id="audio-encrypt" class="section card">
+            <h2>Audio Encryption</h2>
+            <div class="encrypt-area">
+                <label class="label">Cover Audio</label>
+                <div id="audioUploadBox" class="file-box" role="button" tabindex="0">
+                    Click or Drop An Audio File Here
+                </div>
+                <input id="audioFile" type="file" accept="audio/wav" style="display:none;">
+
+                <label class="label" for="audioMessage">Secret message</label>
+                <textarea id="audioMessage" placeholder="Message to hide inside audio..."></textarea>
+
+                <div class="controls">
+                    <button class="btn" id="audioEncryptBtn">Encrypt Audio</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- AUDIO DECRYPT -->
+        <section id="audio-decrypt" class="section card">
+            <h2>Audio Decryption</h2>
+            <div class="encrypt-area">
+                <label class="label">Encrypted Audio</label>
+                <div id="audioDecryptBox" class="file-box" role="button" tabindex="0">
+                    Click or Drop An Encrypted Audio Here
+                </div>
+                <input id="audioDecryptFile" type="file" accept="audio/wav" style="display:none;">
+
+                <label class="label" for="audioDecryptKey">Encryption Key</label>
+                <input id="audioDecryptKey" type="password" placeholder="Enter encryption key">
+
+                <div class="controls">
+                    <button class="btn ghost" id="audioDecryptBtn">Decrypt Audio</button>
+                </div>
+
+                <div id="audioDecryptResult" style="margin-top:8px;"></div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="about" class="section card">
+            <h2>About</h2>
+            <div class="encrypt-area" style="max-width:880px;">
+                <p class="muted">
+                    ShadowCryption is a lightweight tool for learning and demonstrating secure steganography and
+                    encryption.
+                    Users can hide secret messages inside images and audio files, encrypt them with a password, and
+                    share securely.
+                </p>
+                <p class="muted">
+                    <strong>Technical Details:</strong> We use AES encryption with PBKDF2 key derivation and HMAC
+                    integrity checks.
+                    Messages are embedded into the least significant bits of images (PNG) and audio (WAV) files.
+                </p>
+                <p class="muted">
+                    Developed with privacy and usability in mind, ShadowCryption helps users experiment with secure data
+                    hiding in an easy-to-use interface.
+                </p>
+                <p class="muted">
+                    <strong>Team:</strong> Developed by Shakal Bhau - A passionate developer focused on privacy and security.
+                </p>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact" class="section card">
+            <h2>Contact</h2>
+            <div class="encrypt-area" style="max-width:620px;">
+                <label class="label" for="contactName">Name</label>
+                <input id="contactName" type="text" placeholder="Your name">
+
+                <label class="label" for="contactEmail">Email</label>
+                <input id="contactEmail" type="email" placeholder="you@example.com">
+
+                <label class="label" for="contactMessage">Message</label>
+                <textarea id="contactMessage" placeholder="Write your message..."></textarea>
+
+                <div class="controls">
+                    <button class="btn" id="contactSendBtn">Send Message</button>
+                    <button class="btn ghost" id="contactClearBtn">Clear</button>
+                </div>
+
+                <div id="contactStatus" style="margin-top:8px;"></div>
+            </div>
+        </section>
+
+        <footer>
+            © 2026 ShadowCryption | Developer: Shakal Bhau
+        </footer>
+
+    </main>
+
+    <script src="js/integration.js"></script>
+    <script src="js/index.js" async></script>
+</body>
+
+</html>
