@@ -1,11 +1,12 @@
-# shadowcryption-frontend
+# ShadowCryption
 
 ## Folder Structure 
 
 ```bash
-shadowcryption-frontend/
+ShadowCryption/
 │
 ├── index.html
+├── README.md
 ├── assets/
 │   └── icons/
 │       ├── favicon.ico
